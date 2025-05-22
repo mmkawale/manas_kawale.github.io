@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manas Kawale - Engineering Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1f4e79 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #1f4e79;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+        
+        .profile-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #e74c3c;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .achievement-title {
+            font-weight: bold;
+            color: #1f4e79;
+            margin-bottom: 8px;
+        }
+        
+        .job-entry {
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .job-entry:hover {
+            transform: translateY(-3px);
+        }
+        
+        .job-header {
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1f4e79;
+            margin-bottom: 5px;
+        }
+        
+        .job-period {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .job-bullets {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .job-bullets li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .job-bullets li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            font-weight: 600;
+            color: #1f4e79;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #3498db;
+        }
+        
+        .skill-category h4 {
+            color: #1f4e79;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .education-item, .patent-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .degree {
+            font-weight: bold;
+            color: #1f4e79;
+            font-size: 1.1rem;
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .header {
+                background: #1f4e79 !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="name">MANAS M KAWALE</h1>
+            <p class="title">Engineering Manager • Technology Leader • AI Innovation</p>
+            <div class="contact-info">
+                <a href="mailto:manas.kawale@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    manas.kawale@gmail.com
+                </a>
+                <a href="tel:+12816844150" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    (281) 684-4150
+                </a>
+                <a href="https://www.linkedin.com/in/manas-kawale-57389017/" class="contact-item" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn Profile
+                </a>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="profile-text">
+                    Results-driven Engineering Manager with 13+ years of experience leading high-impact technology teams and platforms. Currently driving experimentation innovation at Microsoft, serving 120+ teams across flagship products (Office, Edge, Windows) with 25K+ monthly experiments. Proven track record of scaling engineering organizations, delivering operational excellence, and generating significant business value ($100MM+ in savings and revenue impact).
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Key Achievements</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-title">Platform Scale Impact</div>
+                        Led experimentation platform processing 25K+ monthly experiments across Microsoft's flagship products, reducing metrics authoring time by 70%
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-title">Business Value Generation</div>
+                        Delivered $100MM+ in combined financial savings and revenue impact across Microsoft and Amazon platforms
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-title">AI Innovation Leadership</div>
+                        Pioneered AI agents and Copilot integration for automated dashboard generation, eliminating manual operational overhead
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-title">Team Building Excellence</div>
+                        Successfully scaled engineering teams from 4 to 20+ engineers while maintaining high performance and operational excellence
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div class="job-title">Engineering Manager, Microsoft | Experimentation Platform</div>
+                        <div class="job-period">Jun 2022 – Present</div>
+                    </div>
+                    <ul class="job-bullets">
+                        <li><span class="highlight">Led A/B testing platform serving 25K+ monthly experiments</span> across 120+ teams including Office, Edge, Windows, and Microsoft News, reducing metrics authoring time by 70% (20min → 6min) and enabling faster product innovation cycles</li>
+                        <li><span class="highlight">Managed team of 10 engineers including principals</span> across 3 product areas, delivering 99.95% available platform with sub-10ms latency while implementing AI agents and Copilot for automated dashboard generation</li>
+                        <li><span class="highlight">Secured executive funding for operational excellence initiatives,</span> achieving 50% bug reduction and significantly improved customer satisfaction through systematic request triage and rapid completion processes</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div class="job-title">SDM, Amazon | Customer Service Applications</div>
+                        <div class="job-period">May 2020 – Jun 2022</div>
+                    </div>
+                    <ul class="job-bullets">
+                        <li><span class="highlight">Led technical team of 20 SDEs in company-wide migration</span> of legacy Call Center Management solution to Amazon Connect, defining 3-year architecture vision for 50+ teams and delivering $70MM in financial savings</li>
+                        <li><span class="highlight">Owned Tier-1 contact routing service</span> processing 350 TPS with 400ms TP90 latency, while reducing annual bot attacks by 75% (300 to 75) through intelligent throttling mechanisms</li>
+                        <li><span class="highlight">Built high-performing engineering organization</span> by growing team from 7 to 20 engineers while providing production support across 6 services</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div class="job-title">SDM, Amazon | Amazon Assistant</div>
+                        <div class="job-period">Jun 2018 – May 2020</div>
+                    </div>
+                    <ul class="job-bullets">
+                        <li><span class="highlight">Led team of 6 engineers owning core Amazon Assistant platform,</span> driving strategic product vision and collaborating with cross-functional teams to define requirements</li>
+                        <li><span class="highlight">Accelerated marketplace expansion</span> by reducing launch time by 20 SDE weeks through infrastructure automation</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div class="job-title">Sr. SDE, Amazon | Amazon Assistant</div>
+                        <div class="job-period">Oct 2017 – June 2018</div>
+                    </div>
+                    <ul class="job-bullets">
+                        <li><span class="highlight">Owned end-to-end technical roadmap delivery</span> implementing Docker-based QA automation framework that saved 10 SDE weeks annually</li>
+                        <li><span class="highlight">Built unified data reporting pipeline</span> that streamlined business review processes across the organization</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div class="job-title">SDE, Amazon | Amazon Assistant</div>
+                        <div class="job-period">Feb 2016 – Sept 2017</div>
+                    </div>
+                    <ul class="job-bullets">
+                        <li><span class="highlight">Led development of contextual features generating $30MM in annual revenue</span> while creating Rapid Experimentation framework</li>
+                        <li><span class="highlight">Achieved 45% reduction in TP90 latency</span> for primary customer-facing feature and patented secure communication method</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div class="job-title">Software Engineer, Halliburton | Decision Space Desktop</div>
+                        <div class="job-period">Jan 2011 – Jan 2016</div>
+                    </div>
+                    <ul class="job-bullets">
+                        <li><span class="highlight">Technical lead for 4-engineer team,</span> designing 2D/3D visualization framework for geophysicists analyzing seismic data</li>
+                        <li><span class="highlight">Architected performance optimization</span> converting Java2D views to OpenGL objects for real-time data visualization</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-code"></i> Programming & Platforms</h4>
+                        <p>Java, TypeScript, JavaScript, Python, AWS, Azure, Spring MVC, HTML, CSS, Android, OpenGL</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4><i class="fas fa-robot"></i> AI & Automation</h4>
+                        <p>AI Agents, Microsoft Copilot, Machine Learning, Automated Dashboard Generation, Intelligent Systems</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4><i class="fas fa-sitemap"></i> Architecture & Design</h4>
+                        <p>Microservices, RESTful APIs, System Design, OOAD, Design Patterns, High-Availability Systems</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4><i class="fas fa-users"></i> Leadership & Management</h4>
+                        <p>Team Building, Strategic Planning, Cross-functional Collaboration, Agile Methodology, Operational Excellence</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div class="degree">Master of Science in Computer Science, GPA 3.7</div>
+                    <div>University of Houston, TX | Dec 2010</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Engineering in Electronics Engineering</div>
+                    <div>University of Mumbai, Mumbai, India | May 2007</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Patents</h2>
+                <div class="patent-item">
+                    <strong>Methods and Systems for Gesture-based Petro-technical Application Control</strong><br>
+                    Jun 05, 2014
+                </div>
+                <div class="patent-item">
+                    <strong>A Secured Method of Data Communication Between a Browser Extension and an Iframe</strong><br>
+                    Mar 28, 2017
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()" title="Print Resume">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <script>
+        // Add smooth scrolling and fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.1s';
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
